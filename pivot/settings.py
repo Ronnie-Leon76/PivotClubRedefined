@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'main',
     'blog',
     'cloudinary',
+    'rangefilter',
 ]
 
 SITE_ID = 1
@@ -101,9 +102,9 @@ WSGI_APPLICATION = 'pivot.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'Pivot-club',
-        'USER': 'postgres',
-        'PASSWORD': 'CASSANOVA76.',
+        'NAME': config("DB_NAME"),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
         'HOST': 'localhost',
         'PORT': '5432',
     }
