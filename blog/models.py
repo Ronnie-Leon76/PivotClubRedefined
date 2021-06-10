@@ -28,7 +28,7 @@ class Article(models.Model):
     is_reviewed = models.BooleanField(
         default=False
     )
-    claps = models.IntegerField()
+    claps = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
