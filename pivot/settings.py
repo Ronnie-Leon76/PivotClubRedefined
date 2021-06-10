@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'main',
     'blog',
     'cloudinary',
-    'rangefilter',
 ]
 
 SITE_ID = 1
@@ -103,8 +102,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': config("DB_NAME"),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
+        'USER': config("DB_USER"),
+        'PASSWORD': config("DB_PASSWORD"),
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -170,9 +169,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 cloudinary.config(
-    cloud_name="ericouma",
-    api_key=config('API_KEY'),
-    api_secret=config('API_SECRET')
+    cloud_name="CLOUDINARY_NAME",
+    api_key=config('CLOUDINARY_API_KEY'),
+    api_secret=config('CLOUDINARY_API_SECRET')
 )
 
 # import dj_database_url
