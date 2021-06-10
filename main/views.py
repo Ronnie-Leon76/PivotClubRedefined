@@ -8,6 +8,7 @@ from blog.models import Article
 from main.forms import ContactForm
 from blog.views import ArticleListView
 
+
 # Create your views here.
 class HomeView(TemplateView):
     template_name = "index.html"
@@ -41,6 +42,7 @@ class PaperListView(ListView):
 class TeamListView(ListView):
     model = Team
 
+
 def contact(request):
     form = ContactForm()
     if form.is_valid():
@@ -55,8 +57,8 @@ def contact(request):
             send_mail(subject, message, from_email, recipient_list)
             return response('Email sent successfully')
         except SMTPException as e:
-            return response('There was an error sending an email: ', e) 
-    
+            return response('There was an error sending an email: ', e)
+
     return render(request, 'contact.html', {'form': form})
 
 
