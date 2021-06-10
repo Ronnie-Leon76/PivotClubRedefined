@@ -23,8 +23,8 @@ urlpatterns = [
     path('', include('main.urls')),
     path('accounts/', include('allauth.urls')),
     path('blog/', include('blog.urls')),
-
+    path('', include('newsletter.urls'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-# Rememner to up signup/signin/signout in main app that redirect to acount aop
+# Remember to up signup/signin/signout in main app that redirect to acount aop
