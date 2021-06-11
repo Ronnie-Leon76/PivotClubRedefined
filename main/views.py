@@ -1,12 +1,12 @@
-from django.shortcuts import render, reverse, redirect
-from django.views.generic import TemplateView, ListView, DetailView
-from django.core.mail import send_mail
 from smtplib import SMTPException
 
-from main.models import Project, ResearchPaper, Team, Gallery
+from django.core.mail import send_mail
+from django.shortcuts import render
+from django.views.generic import TemplateView, ListView, DetailView
+
 from blog.models import Article
 from main.forms import ContactForm
-from blog.views import ArticleListView
+from main.models import Project, ResearchPaper, Team, Gallery
 
 
 # Create your views here.

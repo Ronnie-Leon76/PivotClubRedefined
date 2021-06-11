@@ -3,6 +3,7 @@ from django.shortcuts import reverse
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
+
 # Create your models here.
 
 
@@ -23,7 +24,7 @@ class Project(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     def get_absolute_url(self):
         return reverse('project-detail', args=[str(self.id)])
 
@@ -35,7 +36,6 @@ class ResearchPaper(models.Model):
 
     def __str__(self):
         return self.name
-
 
 
 class Gallery(models.Model):
