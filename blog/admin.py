@@ -8,7 +8,7 @@ from blog.models import Article
 class ArticleAdmin(admin.ModelAdmin):
     actions = ['approve_comments']
     list_display = ["title", 'author', 'is_reviewed', 'last_modified', 'created_on']
-
+    prepopulated_fields = {'slug': ('title',), }
     readonly_fields = ('photo', 'title', 'body', 'author', 'claps')
     list_filter = (
         ('created_on', DateTimeRangeFilter), ('last_modified', DateTimeRangeFilter),
