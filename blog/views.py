@@ -8,14 +8,14 @@ from blog.models import Article
 
 class ArticleListView(ListView):
     model = Article
-    template_name = 'article_list.html'
+    template_name = 'blog/article_list.html'
     context_object_name = 'article'
     paginate_by = 4
 
 
 class ArticleDetailView(DetailView):
     model = Article
-    template_name = 'article_detail.html'
+    template_name = 'blog/article_detail.html'
     context_object_name = 'article'
 
     # adds additional data
@@ -45,15 +45,17 @@ class ArticleCreateView(CreateView):
 
 class ArticleUpdateView(UpdateView):
     model = Article
+    template_name = 'blog/article_create.html'
 
 
 class ArticleDeleteView(DeleteView):
     model = Article
+    template_name = 'blog/article_delete.html'
 
 
 class ArticleGenreView(ListView):
     model = Article
-    template_name = 'article_list.html'
+    template_name = 'blog/article_list.html'
     context_object_name = 'article'
     paginate_by = 2
 
