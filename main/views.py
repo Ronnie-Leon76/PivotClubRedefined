@@ -2,6 +2,7 @@ from smtplib import SMTPException
 
 from django.core.mail import send_mail
 from django.shortcuts import render
+from django.contrib import messages
 from django.views.generic import TemplateView, ListView, DetailView
 
 from blog.models import Article
@@ -55,7 +56,7 @@ def contact(request):
 
         try:
             send_mail(subject, message, from_email, recipient_list)
-            return response('Email sent successfully')
+            return messages.success(request, 'Email sent successfully')
         except SMTPException as e:
             return response('There was an error sending an email: ', e)
 
