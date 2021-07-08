@@ -2,7 +2,7 @@
 This project is built using the [Django](https://www.djangoproject.com/) web framework. 
 It runs on Python 3.9+
 
-* Before Running the project, check project [CHANGELOG](CHANGELOG.md)
+* Before Running the project, check project [CHANGELOG](/docs/CHANGELOG.md)
 
 
 To run the app locally, first clone this repository and `cd` into its directory. Then:
@@ -27,4 +27,4 @@ To run the app locally, first clone this repository and `cd` into its directory.
 
 ## Troubleshooting
 
-1. Read the [FAQ](FAQ.md)
+1. Read the [FAQ](docs/FAQ.md)

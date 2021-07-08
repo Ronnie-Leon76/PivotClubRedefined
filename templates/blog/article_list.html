@@ -5,14 +5,34 @@
     <div class="card-deck">
         {% for article in object_list %}
         <div class="card">
-          <img src="{{ article.photo.url }}" class="card-img-top" alt="{{ article.title }}">
-          <div class="card-body">
-            <span class="card-title">{{ article.title }}</span> <em>by</em> <a href="{{ article.author.get_absolute_url }}">{{ article.author }}</a>
-            <p class="card-text text-truncate">{{ article.body }}</p>
-            <a href="{{ article.get_absolute_url }}" class="btn btn-primary">Read More</a>
-          </div>
+            <img src="{{ article.photo.url }}" class="card-img-top" alt="{{ article.title }}">
+            <div class="card-body">
+                <span class="card-title">{{ article.title }}</span> <em>by</em> <a
+                    href="{{ article.author.get_absolute_url }}">{{ article.author }}</a>
+                <p class="card-text text-truncate">{{ article.body }}</p>
+                <a href="{{ article.get_absolute_url }}" class="btn btn-primary">Read More</a>
+            </div>
         </div>
         {% endfor %}
-      </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+                    <span class="step-links">
+                        {% if page_obj.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                        </span>
+
+                        {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">next</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                        {% endif %}
+                    </span>
+        </div>
+    </div>
 </div>
 {% endblock %}

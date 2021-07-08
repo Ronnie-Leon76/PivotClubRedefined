@@ -1,5 +1,5 @@
 {% extends "account/base.html" %}
-
+{% load crispy_forms_tags %}
 {% load i18n %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
@@ -10,6 +10,62 @@
 {% endblock %}
 
 {% block content %}
+<style type="text/css">
+  .bg {
+    /* The image used */
+    background-image: url("");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .cardinput {
+    position: absolute;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: auto;
+    padding-bottom: 5%;
+    margin-top: 5%;
+  }
+
+  @media screen and (max-width: 480px) {
+    .cardinput {
+        position: absolute;
+        width: 95%;
+        margin-left: 3%;
+        margin-right: auto;
+        padding-bottom: 5%;
+        margin-top: 8%;
+    }
+  }
+  .form-signup {
+    width: 100%;
+    max-width: 350px;
+    padding: 1px;
+    margin: auto;
+    margin-top: 10px;
+  }
+  .form-signup .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 8px;
+    font-size: 14px;
+  }
+  .form-signup .form-control:focus {
+    z-index: 2;
+  }
+  .form-signup input{
+    margin-bottom: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+</style>
 <div class="container-fluid">
 
  {% block messages %}
@@ -29,24 +85,31 @@
     {% endif %}
   {% endblock %}
   
+<div class="bg">
+  <div class="card cardinput">
+    <div class="d-flex flex-column pd-3 mt-3">
+      <h3 class="h3" id="head_banner">{% trans "The Pivot Club KU" %}</h3>
+      
+      <p class="exist_account_info">{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
 
-<h3 class="h3" id="head_banner">{% trans "Sign Up" %}</h3>
+      <form class="form-signup" method="post" action="{% url 'account_signup' %}">
+        {% csrf_token %}
+                
+        {{ form|crispy }}
+                
+        {% if redirect_field_value %}
+                
+        <input type="hidden" name="{{ redirect_field_name }}" class="form-control" value="{{ redirect_field_value }}" />
+                  
+        {% endif %}
+                  
+        <button class="btn btn-outline-primary btn-lg" type="submit">{% trans "Sign Up" %}</button>
+      </form>
+    </div>
+  </div>
+</div>
 
-<p class="exist_account_info">{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
 
-<form class="container-fluid text-center" id="signup_form" method="post" action="{% url 'account_signup' %}">
-  {% csrf_token %}
-
-  {{ form.as_p }}
-
-  {% if redirect_field_value %}
-
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  
-  {% endif %}
-  
-  <button class="btn btn-outline-primary btn-lg" type="submit">{% trans "Sign Up" %}</button>
-</form>
 
 </div>
 {% endblock %}

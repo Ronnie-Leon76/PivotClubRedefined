@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="text-uppercase">Upload your article</h4>
+
+            <form class="review-form" action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {% if request.user.is_authenticated %}
+                <button class="btn btn-info btn-sm">Submit</button>
+                {% else %}
+                Log in to make a review
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
