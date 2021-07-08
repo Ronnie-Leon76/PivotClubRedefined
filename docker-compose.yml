@@ -1,0 +1,52 @@
+version: "3.9"
+
+services:
+
+  web:
+    build: .
+    image: "pivot-dev-http:latest"
+    container_name: "pivot-dev-http-server"
+    command: sh -c "python manage.py wait_for_db && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    env_file:
+      - .env
+    volumes:
+      - .:/pivot-club
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    # restart: on-failure
+
+#  redis:
+#    image: redis:alpine
+
+#  celery:
+#    restart: always
+#    build:
+#      context: .
+#    command: celery -A stadi_jobs worker -l info -Q celery,sendmail,celery_sms
+#    volumes:
+#      - celery_volume:/stadi/celery
+#    env_file:
+#      - .env.dev
+#    depends_on:
+#      - db
+#      - redis
+#      - http
+
+  db:
+    image: postgres:13.3-buster
+    container_name: "pivot-dev-db-server"
+    volumes:
+       - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+
+
+volumes:
+  postgres_data:
+  celery_volume:

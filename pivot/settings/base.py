@@ -21,6 +21,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_ROOT = BASE_DIR / 'media'
 TEMPLATE_DIR = BASE_DIR / 'templates'
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -54,6 +55,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'main',
     'blog',
+    'newsletter',
 
 ]
 
@@ -74,6 +76,7 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 MIDDLEWARE = [
+
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -157,6 +160,7 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 
+
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
@@ -168,5 +172,4 @@ ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
 ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/accounts/profile/'
-ACCOUNT_SIGNUP_FORM_CLASS = 'accounts.forms.SignUpForm'
+LOGIN_REDIRECT_URL = '/accounts/email/'
