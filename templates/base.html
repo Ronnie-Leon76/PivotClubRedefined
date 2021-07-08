@@ -1,6 +1,7 @@
+<!DOCTYPE html>
 {% load static %}
 {% load cloudinary %}
-<!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -34,6 +35,7 @@
           margin-right: 20px;
         }
       </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -154,10 +156,14 @@
                                 <li><i class="fa fa-map-marker"></i><span>Kenyatta University, Nairobi.</span></li>
                             </ul>
                         </div><!-- .foot-contact -->
-
+                        {% for message in messages%}
+                        {{message}}
+                        ppp
+                        {%endfor%}
                         <div class="subscribe-form">
-                            <form class="d-flex flex-wrap align-items-center">
-                                <input type="email" placeholder="Your email">
+                            <div id="newsletter_alert"></div>
+                            <form id="subscribe_form" method="POST" action="{% url 'subscribe_newsletter' %}" class="d-flex flex-wrap align-items-center"  >
+                                <input type="text" id="email" placeholder="Your email">
                                 <input type="submit" value="send">
                             </form><!-- .flex -->
                         </div><!-- .search-widget -->
@@ -181,8 +187,7 @@
             </div><!-- .container -->
         </div><!-- .footer-bar -->
     </footer><!-- .site-footer -->
-
-    <script type='text/javascript' src="{% static 'js/jquery.js' %}"></script>
+    <script type='text/javascript' src="{% static 'js/newsletter.js' %}"></script>
     <script type='text/javascript' src="{% static 'js/jquery.collapsible.min.js' %}"></script>
     <script type='text/javascript' src="{% static 'js/swiper.min.js' %}"></script>
     <script type='text/javascript' src="{% static 'js/jquery.countdown.min.js' %}"></script>
