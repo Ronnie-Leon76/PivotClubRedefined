@@ -23,7 +23,10 @@ def subscribe_newsletter(request):
         data['message'] = 'this email already exists'
         return JsonResponse(data)
 
-    new_user = Newsletter(email=email)
+    new_user = Newsletter(
+        email=email
+    )
     new_user.save()
+
     data['message'] = 'subscribed to our newsletter successfully'
     return JsonResponse(data)
