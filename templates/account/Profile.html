@@ -1,0 +1,22 @@
+{% extends "account/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% block content %}
+{% if user.is_authenticated %}
+<a href="{% url 'account:profile_update' %}">Update Profile</a> | <a href="{% url 'account_change_password' %}">Change Password</a> |
+<a href="{% url 'account_logout' %}">Logout</a>
+{% endif %}
+<p>Welcome, {{ user.username }}.</p>
+
+
+<h2>My Profile</h2>
+
+<ul>
+    <li>Bio: {{ user.profile.bio }} </li>
+    <li>Course: {{ user.profile.course }} </li>
+    <li>Registration No: {{ user.profile.reg_no }} </li>
+    <li>Team: {{ user.profile.team }} </li>
+</ul>
+
+
+{% endblock %}

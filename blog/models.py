@@ -20,8 +20,8 @@ class Article(models.Model):
     slug = models.SlugField(max_length=250, null=True, blank=True)
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
     body = models.TextField()
-    photo = CloudinaryField(
-        'image',
+    photo = models.ImageField(
+        upload_to='blogs/image',
         null=True
     )
     created_on = models.DateTimeField(
