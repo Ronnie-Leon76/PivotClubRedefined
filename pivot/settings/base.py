@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'crispy_forms',
     'widget_tweaks',
+    'rangefilter',
 
     # project apps
     'accounts.apps.AccountsConfig',
